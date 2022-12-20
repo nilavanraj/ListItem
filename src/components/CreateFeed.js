@@ -3,7 +3,7 @@ import {View, StyleSheet, TextInput, Button} from 'react-native';
 import {Box, Text} from './common';
 import colors from './assets/colors.json';
 import {setallList, setEditList} from '../store/Item';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 const styles = StyleSheet.create({
   input: {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
 });
 let inputRef = {};
-const Login = ({submitCb, title, description, edit}) => {
+const CreateFeed = ({submitCb, title, description, edit}) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({title, description});
   const [disable, setDisable] = useState(true);
@@ -57,7 +57,6 @@ const Login = ({submitCb, title, description, edit}) => {
   }, [formData]);
   const onSubmit = useCallback(() => {
     submitCb();
-    console.log("--,,",edit, edit != null);
     if (edit != null) {
       dispatch(
         setEditList({
@@ -160,4 +159,4 @@ const Login = ({submitCb, title, description, edit}) => {
   );
 };
 
-export default Login;
+export default CreateFeed;
